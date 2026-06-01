@@ -19,6 +19,7 @@ RUN pnpm --filter @paperclipai/ui build \
 
 FROM base AS production
 WORKDIR /app
+RUN npm install -g @anthropic-ai/claude-code
 COPY --from=build /app /app
 RUN apt-get update \
   && apt-get install -y --no-install-recommends openssh-client jq gosu \
